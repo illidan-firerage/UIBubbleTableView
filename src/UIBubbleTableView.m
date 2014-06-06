@@ -222,6 +222,16 @@
 }
 
 #pragma mark -
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(bubbleTableViewWillBeginDragging:)]) {
+        [_delegate bubbleTableViewWillBeginDragging:self];
+    }
+}
+
+#pragma mark -
 #pragma mark - Member Methods
 
 - (void)scrollsToBottomAnimated:(BOOL)animated

@@ -57,7 +57,7 @@
     // The line below enables avatar support. Avatar can be specified for each bubble with .avatar property of NSBubbleData.
     // Avatars are enabled for the whole table at once. If particular NSBubbleData misses the avatar, a default placeholder will be set (missingAvatar.png)
     
-    bubbleTable.showAvatars = YES;
+//    bubbleTable.showAvatars = YES;
     
     // Uncomment the line below to add "Now typing" bubble
     // Possible values are

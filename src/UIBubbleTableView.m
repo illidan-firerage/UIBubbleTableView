@@ -25,7 +25,6 @@
 @synthesize snapInterval = _snapInterval;
 @synthesize bubbleSection = _bubbleSection;
 @synthesize typingBubble = _typingBubble;
-@synthesize showAvatars = _showAvatars;
 
 #pragma mark - Initializators
 
@@ -43,7 +42,7 @@
     // UIBubbleTableView default properties
     
     self.snapInterval = 120;
-    self.typingBubble = NSBubbleTypingTypeNobody;
+    self.typingBubble = NSBubbleTypingTypeMe;
 }
 
 - (id)init
@@ -122,7 +121,7 @@
              NSBubbleData *bubbleData1 = (NSBubbleData *)obj1;
              NSBubbleData *bubbleData2 = (NSBubbleData *)obj2;
              
-             return [bubbleData1.date compare:bubbleData2.date];            
+             return [bubbleData1.date compare:bubbleData2.date];
          }];
         
         NSDate *last = [NSDate dateWithTimeIntervalSince1970:0];
@@ -174,7 +173,7 @@
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        return MAX([UIBubbleTypingTableViewCell height], self.showAvatars ? 52 : 0);
+        return [UIBubbleTypingTableViewCell height];
     }
     
     // Header
@@ -184,7 +183,7 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
+    return data.insets.top + data.view.frame.size.height + data.insets.bottom;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,13 +195,10 @@
         UIBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         
         if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
-
         cell.type = self.typingBubble;
-        cell.showAvatar = self.showAvatars;
-        
         return cell;
     }
-
+    
     // Header with date and time
     if (indexPath.row == 0)
     {
@@ -211,36 +207,35 @@
         NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
         if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
-
         cell.date = data.date;
-       
         return cell;
     }
     
-    // Standard bubble    
+    // Standard bubble
     static NSString *cellId = @"tblBubbleCell";
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
-    
     cell.data = data;
-    cell.showAvatar = self.showAvatars;
-    
     return cell;
 }
 
-#pragma mark - Public interface
+#pragma mark -
+#pragma mark - Member Methods
 
-- (void) scrollBubbleViewToBottomAnimated:(BOOL)animated
+- (void)scrollsToBottomAnimated:(BOOL)animated
 {
-    NSInteger lastSectionIdx = [self numberOfSections] - 1;
-    
-    if (lastSectionIdx >= 0)
-    {
-    	[self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([self numberOfRowsInSection:lastSectionIdx] - 1) inSection:lastSectionIdx] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+    int row = 0;
+    int sectionCount = [self.bubbleSection count];
+    if (self.typingBubble != NSBubbleTypingTypeNobody) {
+        sectionCount++;
+        row = 0;
+    } else {
+        row = [[self.bubbleSection objectAtIndex:sectionCount - 1] count] - 1;
     }
+    
+    [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:sectionCount - 1] atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
-
 
 @end

@@ -196,6 +196,7 @@
         
         if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
         cell.type = self.typingBubble;
+        cell.showAvatar = self.showAvatar;
         return cell;
     }
     
@@ -218,6 +219,7 @@
     
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
     cell.data = data;
+    cell.showAvatar = self.showAvatar;
     return cell;
 }
 

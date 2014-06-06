@@ -226,8 +226,8 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(bubbleTableViewWillBeginDragging:)]) {
-        [_delegate bubbleTableViewWillBeginDragging:self];
+    if (_bubbleDelegate && [_bubbleDelegate respondsToSelector:@selector(bubbleTableViewWillBeginDragging:)]) {
+        [_bubbleDelegate bubbleTableViewWillBeginDragging:self];
     }
 }
 

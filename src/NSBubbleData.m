@@ -20,6 +20,9 @@
 @synthesize view = _view;
 @synthesize insets = _insets;
 @synthesize avatar = _avatar;
+@synthesize missingAvatar = _missingAvatar;
+@synthesize bubbleImage = _bubbleImage;
+@synthesize bubbleNewImage = _bubbleNewImage;
 
 #pragma mark - Lifecycle
 

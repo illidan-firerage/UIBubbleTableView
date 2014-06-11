@@ -183,7 +183,15 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return data.insets.top + data.view.frame.size.height + data.insets.bottom;
+    CGFloat contentHeight = data.insets.top + data.view.frame.size.height + data.insets.bottom;
+    if (self.showAvatar && NSBUbbleAvatarSize >= contentHeight) {
+        contentHeight = NSBUbbleAvatarSize;
+        if (data.bubbleNewImage) {
+             contentHeight += data.bubbleNewImage.size.height + NSBubbleNewMarginY;
+        }
+    }
+    
+    return contentHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

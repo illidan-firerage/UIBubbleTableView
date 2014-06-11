@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1301BEA61947E23A00965487 /* bubbleNew@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1301BEA51947E23A00965487 /* bubbleNew@2x.png */; };
 		76687AFD1622039C00707588 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */; };
 		76687AFF162203AF00707588 /* halloween.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76687AFE162203AF00707588 /* halloween.jpg */; };
 		76D097CC1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1301BEA51947E23A00965487 /* bubbleNew@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleNew@2x.png"; sourceTree = "<group>"; };
 		13489F851941D43C0019F1B0 /* UIBubbleTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDelegate.h; sourceTree = "<group>"; };
 		76687AFB1622039C00707588 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTypingTableViewCell.h; path = ../../src/UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
 		76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTypingTableViewCell.m; path = ../../src/UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		C83B107015DE43180067DADE /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1301BEA51947E23A00965487 /* bubbleNew@2x.png */,
 				C83B107115DE43180067DADE /* bubbleMine.png */,
 				C83B107215DE43180067DADE /* bubbleMine@2x.png */,
 				C83B107315DE43180067DADE /* bubbleSomeone.png */,
@@ -248,6 +251,7 @@
 				C83B107E15DE43180067DADE /* typingMine@2x.png in Resources */,
 				C83B107F15DE43180067DADE /* typingSomeone.png in Resources */,
 				C83B108015DE43180067DADE /* typingSomeone@2x.png in Resources */,
+				1301BEA61947E23A00965487 /* bubbleNew@2x.png in Resources */,
 				76687AFF162203AF00707588 /* halloween.jpg in Resources */,
 				C836D5CA1625CBA5004CB4A9 /* missingAvatar.png in Resources */,
 				C836D5CB1625CBA5004CB4A9 /* missingAvatar@2x.png in Resources */,

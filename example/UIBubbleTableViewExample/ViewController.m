@@ -36,14 +36,23 @@
 {
     [super viewDidLoad];
     
+    UIImage *bubbleSomeoneImage = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
+    UIImage *bubbleMineImage = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
+    UIImage *missingAvatar = [UIImage imageNamed:@"missingAvatar.png"];
+    
     NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Hey, halloween is soon" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
     heyBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
+    heyBubble.bubbleImage = bubbleSomeoneImage;
 
     NSBubbleData *photoBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
     photoBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
+    photoBubble.bubbleImage = bubbleSomeoneImage;
     
-    NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
-    replyBubble.avatar = nil;
+    NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.." date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
+    replyBubble.missingAvatar = missingAvatar;
+    replyBubble.bubbleNewImage = [UIImage imageNamed:@"bubbleNew"];
+    replyBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
+    replyBubble.bubbleImage = bubbleMineImage;
     
     bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, photoBubble, replyBubble, nil];
     bubbleTable.bubbleDataSource = self;
@@ -57,7 +66,7 @@
     // The line below enables avatar support. Avatar can be specified for each bubble with .avatar property of NSBubbleData.
     // Avatars are enabled for the whole table at once. If particular NSBubbleData misses the avatar, a default placeholder will be set (missingAvatar.png)
     
-//    bubbleTable.showAvatars = YES;
+    bubbleTable.showAvatar = YES;
     
     // Uncomment the line below to add "Now typing" bubble
     // Possible values are

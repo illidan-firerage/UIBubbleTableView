@@ -184,8 +184,8 @@
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     CGFloat contentHeight = data.insets.top + data.view.frame.size.height + data.insets.bottom;
-    if (self.showAvatar && NSBUbbleAvatarSize >= contentHeight) {
-        contentHeight = NSBUbbleAvatarSize;
+    if (self.showAvatar && data.avatarSize.height >= contentHeight) {
+        contentHeight = data.avatarSize.height;
         if (data.bubbleNewImage) {
              contentHeight += data.bubbleNewImage.size.height + NSBubbleNewMarginY;
         }

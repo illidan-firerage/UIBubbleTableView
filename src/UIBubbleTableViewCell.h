@@ -12,7 +12,6 @@
 #import "NSBubbleData.h"
 
 #define NSBubbleNewMarginY 5
-#define NSBUbbleAvatarSize 50
 
 @interface UIBubbleTableViewCell : UITableViewCell
 

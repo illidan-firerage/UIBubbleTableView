@@ -78,6 +78,7 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 const UIEdgeInsets imageInsetsMine = {11, 13, 16, 22};
 const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
+#define avatarDefaultSize CGSizeMake(40, 40)
 
 + (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type
 {
@@ -136,6 +137,7 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 #endif
         _type = type;
         _insets = insets;
+        _avatarSize = avatarDefaultSize;
     }
     return self;
 }

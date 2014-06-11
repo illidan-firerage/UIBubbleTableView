@@ -92,10 +92,10 @@
         self.avatarImageView.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:0.2].CGColor;
         self.avatarImageView.layer.borderWidth = 1.0;
         
-        CGFloat avatarX = (type == BubbleTypeSomeoneElse) ? 2 : self.frame.size.width - 52;
-        CGFloat avatarY = self.frame.size.height - 50;
+        CGFloat avatarX = (type == BubbleTypeSomeoneElse) ? 10 : self.frame.size.width - self.data.avatarSize.width - 10;
+        CGFloat avatarY = self.frame.size.height - self.data.avatarSize.height;
         
-        self.avatarImageView.frame = CGRectMake(avatarX, avatarY, NSBUbbleAvatarSize, NSBUbbleAvatarSize);
+        self.avatarImageView.frame = CGRectMake(avatarX, avatarY, self.data.avatarSize.width, self.data.avatarSize.height);
         [self addSubview:self.avatarImageView];
         
         self.bubbleNewImageView.frame = CGRectMake(avatarX, avatarY - NSBubbleNewMarginY - CGRectGetHeight(self.bubbleNewImageView.frame), CGRectGetWidth(self.bubbleNewImageView.frame), CGRectGetHeight(self.bubbleNewImageView.frame));
@@ -104,8 +104,8 @@
         CGFloat delta = self.frame.size.height - (self.data.insets.top + self.data.insets.bottom + self.data.view.frame.size.height);
         if (delta > 0) y = delta;
         
-        if (type == BubbleTypeSomeoneElse) x += 54;
-        if (type == BubbleTypeMine) x -= 54;
+        if (type == BubbleTypeSomeoneElse) x += self.data.avatarSize.width + 13;
+        if (type == BubbleTypeMine) x -= self.data.avatarSize.width + 10;
     }
 
     [self.customView removeFromSuperview];

@@ -12,5 +12,6 @@
 @optional
 
 - (void)bubbleTableViewWillBeginDragging:(UIBubbleTableView *)bubbleTableView;
+- (void)bubbleTableView:(UIBubbleTableView *)bubbleTableView didSelectedAvatar:(NSBubbleData *)bubbleData;
 
 @end

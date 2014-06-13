@@ -13,7 +13,7 @@
 #import "UIBubbleHeaderTableViewCell.h"
 #import "UIBubbleTypingTableViewCell.h"
 
-@interface UIBubbleTableView ()
+@interface UIBubbleTableView () <UIBubbleTableViewCellDelegate>
 
 @property (nonatomic, retain) NSMutableArray *bubbleSection;
 
@@ -223,9 +223,9 @@
     // Standard bubble
     static NSString *cellId = @"tblBubbleCell";
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
+    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    cell.delegate = self;
     cell.data = data;
     cell.showAvatar = self.showAvatar;
     return cell;
@@ -251,11 +251,23 @@
     if (self.typingBubble != NSBubbleTypingTypeNobody) {
         sectionCount++;
         row = 0;
-    } else {
+    } else if (sectionCount > 0) {
         row = [[self.bubbleSection objectAtIndex:sectionCount - 1] count] - 1;
     }
     
-    [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:sectionCount - 1] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    if (sectionCount > 0) {
+        [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:sectionCount - 1] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    }
+}
+
+#pragma mark -
+#pragma mark - UIBubbleTableViewCellDelegate
+
+- (void)bubbleTableViewCellDidSelectedAvatar:(UIBubbleTableViewCell *)bubbleTableViewCell
+{
+    if (_bubbleDelegate && [_bubbleDelegate respondsToSelector:@selector(bubbleTableView:didSelectedAvatar:)]) {
+        [_bubbleDelegate bubbleTableView:self didSelectedAvatar:bubbleTableViewCell.data];
+    }
 }
 
 @end

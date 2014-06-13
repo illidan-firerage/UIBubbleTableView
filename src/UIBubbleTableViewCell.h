@@ -13,9 +13,18 @@
 
 #define NSBubbleNewMarginY 5
 
+@protocol UIBubbleTableViewCellDelegate;
+
 @interface UIBubbleTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) id<UIBubbleTableViewCellDelegate> delegate;
 @property (nonatomic, strong) NSBubbleData *data;
 @property (nonatomic) BOOL showAvatar;
+
+@end
+
+@protocol UIBubbleTableViewCellDelegate <NSObject>
+
+- (void)bubbleTableViewCellDidSelectedAvatar:(UIBubbleTableViewCell *)bubbleTableViewCell;
 
 @end
